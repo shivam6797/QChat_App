@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:qchat_app/config/app_routes.dart';
 import 'package:qchat_app/features/auth/data/repository/auth_repository.dart';
 import 'package:qchat_app/features/chat/bloc/chat_bloc.dart';
 import 'package:qchat_app/features/chat/bloc/chat_event.dart';
@@ -76,11 +78,7 @@ class _ChatListScreenState extends State<ChatListScreen> with AutomaticKeepAlive
             onPressed: () async {
               await AuthRepository().logout();
               if (mounted) {
-                Navigator.pushNamedAndRemoveUntil(
-                  context, 
-                  '/login', 
-                  (route) => false
-                );
+                context.goNamed(AppRoutes.login);
               }
             },
           ),

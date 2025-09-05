@@ -28,12 +28,16 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state is AuthSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("Login Successfully")),
+              const SnackBar(
+                backgroundColor: Colors.green,
+                content: Text("Login Successfully",style: TextStyle(color: Colors.white),)),
             );
             context.goNamed(AppRoutes.chatList);
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.error)),
+              SnackBar(
+                backgroundColor: Colors.red,
+                content: Text(state.error)),
             );
           }
         },
